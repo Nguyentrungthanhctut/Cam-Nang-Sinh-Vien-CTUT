@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cẩm Nang Sinh Viên CTUT - Tác giả  NGUYEN TRUNG THANH</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ctut: {
+                            50: '#e6f0fa',
+                            100: '#cce0f5',
+                            500: '#0056b3',
+                            600: '#004494',
+                            700: '#003375',
+                            800: '#002256',
+                            900: '#001438',
+                            accent: '#ff9900'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-ctut {
+            background: linear-gradient(135deg, #003375 0%, #0056b3 50%, #0072ce 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .active-tab {
+            background-color: #0056b3 !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header & Navigation -->
+    <header class="gradient-ctut text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Brand -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center p-1 shadow-md border-2 border-amber-400">
+                        <!-- Logo Placeholder / Symbol -->
+                        <div class="text-ctut-700 font-black text-xl tracking-tighter">CTUT</div>
+                    </div>
+                    <div>
+                        <h1 class="font-extrabold text-lg sm:text-xl tracking-wide uppercase leading-tight">CẨM NANG SINH VIÊN CTUT</h1>
+                        <p class="text-xs text-blue-100 flex items-center space-x-1">
+                            <span>Đại học Kỹ thuật - Công nghệ Cần Thơ</span>
+                            <span class="bg-amber-400 text-slate-900 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full ml-1">Tác giả: NGUYEN TRUNG THANH</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-2">
+                    <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10 active-tab">
+                        <i class="fa-solid fa-house mr-2"></i>Trang chủ
+                    </button>
+                    <button onclick="switchTab('schedule')" id="nav-schedule" class="nav-btn px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10">
+                        <i class="fa-regular fa-clock mr-2"></i>Thời gian dạy học
+                    </button>
+                    <button onclick="switchTab('calculator')" id="nav-calculator" class="nav-btn px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10">
+                        <i class="fa-solid fa-calculator mr-2"></i>Tính điểm & Dự báo
+                    </button>
+                    <button onclick="switchTab('grading-scale')" id="nav-grading-scale" class="nav-btn px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10">
+                        <i class="fa-solid fa-table-list mr-2"></i>Thang điểm CTUT
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg hover:bg-white/10 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-ctut-800 border-t border-ctut-600 px-4 pt-2 pb-4 space-y-2 shadow-xl">
+            <button onclick="switchTab('home')" class="w-full text-left px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-white/10 flex items-center">
+                <i class="fa-solid fa-house w-6"></i>Trang chủ
+            </button>
+            <button onclick="switchTab('schedule')" class="w-full text-left px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-white/10 flex items-center">
+                <i class="fa-regular fa-clock w-6"></i>Thời gian dạy học
+            </button>
+            <button onclick="switchTab('calculator')" class="w-full text-left px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-white/10 flex items-center">
+                <i class="fa-solid fa-calculator w-6"></i>Tính điểm & Dự báo
+            </button>
+            <button onclick="switchTab('grading-scale')" class="w-full text-left px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-white/10 flex items-center">
+                <i class="fa-solid fa-table-list w-6"></i>Thang điểm CTUT
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= TAB 1: HOME & ABOUT ================= -->
+        <section id="tab-home" class="tab-content space-y-8 animate-fadeIn">
+            <!-- Hero Banner -->
+            <div class="gradient-ctut rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl pointer-events-none">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="max-w-2xl relative z-10 space-y-4">
+                    <span class="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Phiên bản tiện ích sinh viên</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight">Chào mừng bạn đến với Cẩm Nang Sinh Viên CTUT</h2>
+                    <p class="text-blue-100 text-sm sm:text-base leading-relaxed">
+                        Công cụ hỗ trợ học tập đắc lực dành cho sinh viên Trường Đại học Kỹ thuật - Công nghệ Cần Thơ. Tra cứu thời khóa biểu tiết học, tính toán điểm số chính xác và dự báo điểm thi để tối ưu hóa kết quả học tập.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="switchTab('calculator')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center">
+                            <i class="fa-solid fa-calculator mr-2"></i>Tính điểm môn học ngay
+                        </button>
+                        <button onclick="switchTab('schedule')" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl backdrop-blur-sm transition flex items-center">
+                            <i class="fa-regular fa-clock mr-2"></i>Xem giờ tiết học
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Author Badge & Feature Highlights -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Author Card -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-ctut-50 text-ctut-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-user-pen"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Tác giả thực hiện</h3>
+                        <p class="text-2xl font-extrabold text-ctut-600 mt-1"> NGUYEN TRUNG THANH</p>
+                        <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                            Ứng dụng được xây dựng nhằm mang tới giải pháp tra cứu & quản lý học tập thông minh, chính xác chuẩn theo quy chế đào tạo tín chỉ của CTUT.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                        <span><i class="fa-solid fa-shield-halved mr-1"></i>Dữ liệu chuẩn quy chế</span>
+                        <span class="text-ctut-600 font-medium">CTUT 2026</span>
+                    </div>
+                </div>
+
+                <!-- Schedule Card -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Khung Giờ Tiết Học</h3>
+                        <p class="text-sm text-slate-600 mt-2">
+                            Xem chi tiết thời gian bắt đầu, kết thúc và thời gian nghỉ của 13 tiết học Sáng - Chiều - Tối.
+                        </p>
+                    </div>
+                    <button onclick="switchTab('schedule')" class="mt-4 text-ctut-600 hover:text-ctut-800 text-sm font-bold flex items-center">
+                        Xem chi tiết khung giờ <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Calculator Card -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Tính Điểm & Dự Báo</h3>
+                        <p class="text-sm text-slate-600 mt-2">
+                            Tính điểm hệ 10, hệ 4, xếp loại học phần và đưa ra gợi ý điểm thi cuối kỳ cần đạt để có tấm bằng đẹp.
+                        </p>
+                    </div>
+                    <button onclick="switchTab('calculator')" class="mt-4 text-ctut-600 hover:text-ctut-800 text-sm font-bold flex items-center">
+                        Tính điểm & gợi ý ngay <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Realtime Clock Widget -->
+            <div id="realtime-status-card" class="bg-slate-900 text-white rounded-2xl p-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 bg-ctut-500 rounded-2xl flex items-center justify-center text-2xl text-white shadow-inner">
+                        <i class="fa-solid fa-business-time"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-400 font-medium">BÂY GIỜ LÀ</div>
+                        <div id="live-clock" class="text-2xl font-black tracking-wider text-amber-400">00:00:00</div>
+                    </div>
+                </div>
+                <div class="text-right sm:text-right text-center w-full sm:w-auto">
+                    <span id="current-period-badge" class="inline-block px-4 py-2 rounded-xl text-xs font-extrabold bg-slate-800 border border-slate-700 text-blue-300">
+                        Đang xác định tiết học...
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: THỜI GIAN DẠY HỌC ================= -->
+        <section id="tab-schedule" class="tab-content hidden space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center">
+                        <i class="fa-solid fa-clock text-ctut-600 mr-3"></i>Thời Gian Dạy Học Standard CTUT
+                    </h2>
+                    <p class="text-sm text-slate-500">Khung thời gian các tiết học chuẩn của Trường ĐH Kỹ thuật - Công nghệ Cần Thơ</p>
+                </div>
+                <div class="bg-blue-50 text-ctut-700 px-4 py-2 rounded-xl text-xs font-semibold border border-blue-100 flex items-center self-start">
+                    <i class="fa-solid fa-circle-info mr-2 text-ctut-500"></i>Nghỉ giữa giờ 15 phút sau Tiết 3 & Tiết 8
+                </div>
+            </div>
+
+            <!-- Schedule Table Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="gradient-ctut text-white text-sm uppercase tracking-wider">
+                                <th class="py-4 px-6 font-bold w-28 text-center">Buổi học</th>
+                                <th class="py-4 px-6 font-bold text-center w-20">Tiết</th>
+                                <th class="py-4 px-6 font-bold text-center">Giờ bắt đầu</th>
+                                <th class="py-4 px-6 font-bold text-center">Giờ kết thúc</th>
+                                <th class="py-4 px-6 font-bold text-center">Thời gian nghỉ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-sm text-slate-700">
+                            <!-- SÁNG -->
+                            <tr class="bg-blue-50/50 hover:bg-blue-50 transition">
+                                <td rowspan="5" class="py-4 px-6 font-extrabold text-ctut-700 text-center border-r border-slate-200 bg-blue-100/40">
+                                    <div class="flex flex-col items-center">
+                                        <i class="fa-solid fa-sun text-amber-500 text-xl mb-1"></i>
+                                        SÁNG
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">1</td>
+                                <td class="py-3 px-6 text-center font-medium">7 giờ 00</td>
+                                <td class="py-3 px-6 text-center font-medium">7 giờ 50</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+                            <tr class="bg-blue-50/50 hover:bg-blue-50 transition">
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">2</td>
+                                <td class="py-3 px-6 text-center font-medium">7 giờ 50</td>
+                                <td class="py-3 px-6 text-center font-medium">8 giờ 40</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+                            <tr class="bg-blue-50/50 hover:bg-blue-50 transition border-b-2 border-amber-200">
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">3</td>
+                                <td class="py-3 px-6 text-center font-medium">8 giờ 40</td>
+                                <td class="py-3 px-6 text-center font-medium">9 giờ 30</td>
+                                <td class="py-3 px-6 text-center font-bold text-amber-600 bg-amber-50/60">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-amber-100 text-amber-800 text-xs">
+                                        <i class="fa-solid fa-mug-hot mr-1.5"></i> 15 phút nghỉ
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="bg-blue-50/50 hover:bg-blue-50 transition">
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">4</td>
+                                <td class="py-3 px-6 text-center font-medium">9 giờ 45</td>
+                                <td class="py-3 px-6 text-center font-medium">10 giờ 35</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+                            <tr class="bg-blue-50/50 hover:bg-blue-50 transition border-b-2 border-slate-300">
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">5</td>
+                                <td class="py-3 px-6 text-center font-medium">10 giờ 35</td>
+                                <td class="py-3 px-6 text-center font-medium">11 giờ 25</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+
+                            <!-- CHIỀU -->
+                            <tr class="hover:bg-orange-50/40 transition">
+                                <td rowspan="5" class="py-4 px-6 font-extrabold text-amber-700 text-center border-r border-slate-200 bg-amber-100/30">
+                                    <div class="flex flex-col items-center">
+                                        <i class="fa-solid fa-cloud-sun text-amber-600 text-xl mb-1"></i>
+                                        CHIỀU
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">6</td>
+                                <td class="py-3 px-6 text-center font-medium">13 giờ 20</td>
+                                <td class="py-3 px-6 text-center font-medium">14 giờ 10</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+                            <tr class="hover:bg-orange-50/40 transition">
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">7</td>
+                                <td class="py-3 px-6 text-center font-medium">14 giờ 10</td>
+                                <td class="py-3 px-6 text-center font-medium">15 giờ 00</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+                            <tr class="hover:bg-orange-50/40 transition border-b-2 border-amber-200">
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">8</td>
+                                <td class="py-3 px-6 text-center font-medium">15 giờ 00</td>
+                                <td class="py-3 px-6 text-center font-medium">15 giờ 50</td>
+                                <td class="py-3 px-6 text-center font-bold text-amber-600 bg-amber-50/60">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-amber-100 text-amber-800 text-xs">
+                                        <i class="fa-solid fa-mug-hot mr-1.5"></i> 15 phút nghỉ
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-orange-50/40 transition">
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">9</td>
+                                <td class="py-3 px-6 text-center font-medium">16 giờ 05</td>
+                                <td class="py-3 px-6 text-center font-medium">16 giờ 55</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+                            <tr class="hover:bg-orange-50/40 transition border-b-2 border-slate-300">
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">10</td>
+                                <td class="py-3 px-6 text-center font-medium">16 giờ 55</td>
+                                <td class="py-3 px-6 text-center font-medium">17 giờ 45</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+
+                            <!-- TỐI -->
+                            <tr class="bg-indigo-50/40 hover:bg-indigo-50 transition">
+                                <td rowspan="3" class="py-4 px-6 font-extrabold text-indigo-800 text-center border-r border-slate-200 bg-indigo-100/40">
+                                    <div class="flex flex-col items-center">
+                                        <i class="fa-solid fa-moon text-indigo-600 text-xl mb-1"></i>
+                                        TỐI
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">11</td>
+                                <td class="py-3 px-6 text-center font-medium">18 giờ 20</td>
+                                <td class="py-3 px-6 text-center font-medium">19 giờ 10</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+                            <tr class="bg-indigo-50/40 hover:bg-indigo-50 transition">
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">12</td>
+                                <td class="py-3 px-6 text-center font-medium">19 giờ 10</td>
+                                <td class="py-3 px-6 text-center font-medium">20 giờ 00</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+                            <tr class="bg-indigo-50/40 hover:bg-indigo-50 transition">
+                                <td class="py-3 px-6 font-bold text-center bg-slate-50">13</td>
+                                <td class="py-3 px-6 text-center font-medium">20 giờ 05</td>
+                                <td class="py-3 px-6 text-center font-medium">20 giờ 55</td>
+                                <td class="py-3 px-6 text-center text-slate-400">---</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: TÍNH ĐIỂM HỌC PHẦN & DỰ BÁO ================= -->
+        <section id="tab-calculator" class="tab-content hidden space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl font-bold text-slate-900 flex items-center">
+                    <i class="fa-solid fa-calculator text-ctut-600 mr-3"></i>Kiểm Tra & Đánh Giá Học Phần CTUT
+                </h2>
+                <p class="text-sm text-slate-500">Tính điểm học phần, quy đổi điểm chữ, điểm hệ 4 và dự báo thông minh điểm cuối kỳ cần đạt</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Form Input Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-5">
+                        <h3 class="text-lg font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center">
+                            <i class="fa-solid fa-pen-to-square text-ctut-500 mr-2"></i>Nhập Thông Tin Học Phần
+                        </h3>
+
+                        <!-- Tên môn học -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Tên môn học / Học phần</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                                    <i class="fa-solid fa-book"></i>
+                                </span>
+                                <input type="text" id="subject-name" placeholder="Ví dụ: Lập trình Web, Giải tích 1..." 
+                                    class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-ctut-500 focus:border-ctut-500 text-sm font-medium transition">
+                            </div>
+                        </div>
+
+                        <!-- Trọng số điểm giữa kỳ & cuối kỳ -->
+                        <div class="space-y-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                            <div class="flex justify-between items-center">
+                                <label class="text-xs font-bold text-ctut-800 uppercase">Tỷ lệ trọng số (Hệ số)</label>
+                                <span class="text-xs font-semibold text-ctut-600 bg-white px-2 py-0.5 rounded border border-blue-200">Tổng = 100%</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs text-slate-600 font-medium mb-1">Giữa kỳ (%)</label>
+                                    <select id="mid-weight" onchange="syncWeight('mid')" class="w-full py-2 px-3 bg-white border border-slate-300 rounded-lg text-sm font-bold text-ctut-700 focus:ring-2 focus:ring-ctut-500">
+                                        <option value="10">10%</option>
+                                        <option value="20">20%</option>
+                                        <option value="30" selected>30%</option>
+                                        <option value="40">40%</option>
+                                        <option value="50">50%</option>
+                                        <option value="60">60%</option>
+                                        <option value="70">70%</option>
+                                        <option value="80">80%</option>
+                                        <option value="90">90%</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-slate-600 font-medium mb-1">Cuối kỳ (%)</label>
+                                    <select id="final-weight" onchange="syncWeight('final')" class="w-full py-2 px-3 bg-white border border-slate-300 rounded-lg text-sm font-bold text-amber-700 focus:ring-2 focus:ring-ctut-500">
+                                        <option value="90">90%</option>
+                                        <option value="80">80%</option>
+                                        <option value="70" selected>70%</option>
+                                        <option value="60">60%</option>
+                                        <option value="50">50%</option>
+                                        <option value="40">40%</option>
+                                        <option value="30">30%</option>
+                                        <option value="20">20%</option>
+                                        <option value="10">10%</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nhập điểm Giữa kỳ & Cuối kỳ -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Điểm Giữa Kỳ (0-10)</label>
+                                <input type="number" id="mid-score" step="0.1" min="0" max="10" placeholder="Ví dụ: 8.5" oninput="calculateGrade()"
+                                    class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-ctut-500 font-bold text-slate-800 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Điểm Cuối Kỳ (0-10)</label>
+                                <input type="number" id="final-score" step="0.1" min="0" max="10" placeholder="Ví dụ: 8.0" oninput="calculateGrade()"
+                                    class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-ctut-500 font-bold text-slate-800 text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="pt-2 flex gap-3">
+                            <button onclick="calculateGrade()" class="flex-1 gradient-ctut text-white font-bold py-3 px-4 rounded-xl shadow-md hover:opacity-95 transition flex items-center justify-center">
+                                <i class="fa-solid fa-calculator mr-2"></i>Tính kết quả
+                            </button>
+                            <button onclick="saveCurrentSubject()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center">
+                                <i class="fa-solid fa-bookmark mr-1.5"></i>Lưu môn
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Target Recommendation Selector -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                        <h3 class="text-base font-bold text-slate-800 flex items-center">
+                            <i class="fa-solid fa-wand-magic-sparkles text-amber-500 mr-2"></i>Dự Báo Điểm Cuối Kỳ Cần Đạt
+                        </h3>
+                        <p class="text-xs text-slate-500">Chỉ cần nhập <b>Điểm Giữa Kỳ</b> ở trên, chọn mục tiêu điểm mong muốn dưới đây để xem bạn cần thi bao nhiêu điểm thi cuối kỳ!</p>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Mục tiêu bạn muốn đạt:</label>
+                            <select id="target-grade" onchange="calculateGrade()" class="w-full py-2.5 px-3 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl font-bold text-sm focus:ring-2 focus:ring-amber-500">
+                                <option value="A+">Loại A+ (Từ 9.5 - Điểm 4.0)</option>
+                                <option value="A" selected>Loại A (Từ 8.5 - Điểm 3.8 Giỏi)</option>
+                                <option value="B+">Loại B+ (Từ 8.0 - Điểm 3.5 Khá)</option>
+                                <option value="B">Loại B (Từ 7.0 - Điểm 3.0 Khá)</option>
+                                <option value="C+">Loại C+ (Từ 6.5 - Điểm 2.5)</option>
+                                <option value="C">Loại C (Từ 5.5 - Điểm 2.0 Đạt)</option>
+                                <option value="D">Qua Môn - Loại D (Từ 4.0 - Điểm 1.0)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculation Result & Smart Advice Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Main Score Card -->
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                            <h3 class="text-lg font-bold text-slate-800 flex items-center">
+                                <i class="fa-solid fa-square-poll-vertical text-ctut-600 mr-2"></i>Kết Quả Đánh Giá Học Phần
+                            </h3>
+                            <span id="subject-display-badge" class="bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1 rounded-full">Chưa đặt tên môn</span>
+                        </div>
+
+                        <!-- Score Cards Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-6">
+                            <!-- Điểm Hệ 10 -->
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                                <span class="text-xs text-slate-500 font-semibold uppercase">Điểm Hệ 10</span>
+                                <div id="res-score10" class="text-3xl font-black text-ctut-700 mt-1">0.0</div>
+                                <span class="text-[10px] text-slate-400">Thang 10.0</span>
+                            </div>
+                            <!-- Điểm Chữ -->
+                            <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                                <span class="text-xs text-ctut-700 font-semibold uppercase">Điểm Chữ</span>
+                                <div id="res-letter" class="text-3xl font-black text-ctut-600 mt-1">F</div>
+                                <span class="text-[10px] text-ctut-400">Ký hiệu</span>
+                            </div>
+                            <!-- Điểm Hệ 4 -->
+                            <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100">
+                                <span class="text-xs text-indigo-700 font-semibold uppercase">Điểm Hệ 4</span>
+                                <div id="res-score4" class="text-3xl font-black text-indigo-600 mt-1">0.0</div>
+                                <span class="text-[10px] text-indigo-400">Thang 4.0</span>
+                            </div>
+                            <!-- Xếp loại -->
+                            <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                                <span class="text-xs text-emerald-700 font-semibold uppercase">Xếp Loại</span>
+                                <div id="res-rank" class="text-lg font-black text-emerald-600 mt-2">Kém</div>
+                                <span id="res-status" class="text-[10px] font-bold text-red-500">Không đạt</span>
+                            </div>
+                        </div>
+
+                        <!-- Smart Advice Output Box -->
+                        <div class="bg-amber-50/80 border border-amber-200 rounded-2xl p-5 space-y-3">
+                            <div class="flex items-center text-amber-800 font-bold text-sm">
+                                <i class="fa-solid fa-lightbulb text-amber-500 text-lg mr-2"></i>
+                                Gợi Ý & Lời Khuyên Điểm Số Thông Minh
+                            </div>
+                            <div id="smart-advice-text" class="text-sm text-amber-950 leading-relaxed font-medium">
+                                Hãy nhập điểm Giữa kỳ để hệ thống đưa ra mức điểm thi Cuối kỳ mục tiêu giúp bạn đạt kết quả học tập đẹp nhất!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Saved Subjects / Semester GPA Table -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-base font-bold text-slate-800 flex items-center">
+                                <i class="fa-solid fa-list-check text-ctut-600 mr-2"></i>Danh Sách Môn Đã Lưu (Học Kỳ)
+                            </h3>
+                            <button onclick="clearSavedSubjects()" class="text-xs text-red-500 hover:text-red-700 font-semibold">
+                                <i class="fa-solid fa-trash mr-1"></i>Xóa tất cả
+                            </button>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-600 uppercase border-b border-slate-200">
+                                        <th class="py-2.5 px-3 font-bold">Môn học</th>
+                                        <th class="py-2.5 px-3 font-bold text-center">Tỷ lệ</th>
+                                        <th class="py-2.5 px-3 font-bold text-center">Điểm 10</th>
+                                        <th class="py-2.5 px-3 font-bold text-center">Điểm chữ</th>
+                                        <th class="py-2.5 px-3 font-bold text-center">Điểm 4</th>
+                                        <th class="py-2.5 px-3 font-bold text-center">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="saved-subjects-tbody" class="divide-y divide-slate-100">
+                                    <tr>
+                                        <td colspan="6" class="text-center py-6 text-slate-400 italic">Chưa có môn học nào được lưu vào danh sách.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Summary GPA Card -->
+                        <div id="gpa-summary-box" class="hidden bg-slate-900 text-white p-4 rounded-xl flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 uppercase font-semibold">Trung Bình Chung Học Kỳ (GPA Hệ 4)</span>
+                                <div id="gpa-semester-val" class="text-2xl font-black text-amber-400">0.00</div>
+                            </div>
+                            <div class="text-right">
+                                <span id="gpa-semester-rank" class="bg-ctut-500 text-white text-xs font-bold px-3 py-1 rounded-full">Chưa xếp loại</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: THANG ĐIỂM CHUẨN CTUT ================= -->
+        <section id="tab-grading-scale" class="tab-content hidden space-y-6">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl font-bold text-slate-900 flex items-center">
+                    <i class="fa-solid fa-table-list text-ctut-600 mr-3"></i>Thang Điểm Kiểm Tra & Đánh Giá CTUT
+                </h2>
+                <p class="text-sm text-slate-500">Bảng quy đổi chính thức giữa thang điểm 10, điểm chữ, xếp loại và điểm hệ số 4 của Trường ĐH Kỹ thuật - Công nghệ Cần Thơ</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Table 1: Quy đổi điểm số 10 sang chữ -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="gradient-ctut p-4 text-white font-bold flex items-center justify-between">
+                        <span><i class="fa-solid fa-star mr-2"></i>Bảng Đánh Giá Loại Học Phần</span>
+                        <span class="text-xs bg-white/20 px-2.5 py-1 rounded-full">Chuẩn CTUT</span>
+                    </div>
+                    <div class="p-4">
+                        <table class="w-full text-left text-sm">
+                            <thead>
+                                <tr class="border-b border-slate-200 text-slate-500 uppercase text-xs">
+                                    <th class="py-3 px-3">Loại</th>
+                                    <th class="py-3 px-3">Điểm hệ số 10</th>
+                                    <th class="py-3 px-3 text-center">Điểm chữ</th>
+                                    <th class="py-3 px-3 text-right">Xếp loại</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 font-medium">
+                                <tr class="bg-emerald-50/50">
+                                    <td rowspan="8" class="py-3 px-3 font-bold text-emerald-700 bg-emerald-50 text-xs border-r border-slate-200">
+                                        a) Loại đạt<br><span class="text-[10px] font-normal text-emerald-600">(Tích lũy)</span>
+                                    </td>
+                                    <td class="py-2.5 px-3">9,5 - 10</td>
+                                    <td class="py-2.5 px-3 text-center font-black text-emerald-700">A+</td>
+                                    <td class="py-2.5 px-3 text-right font-bold text-emerald-700">Giỏi</td>
+                                </tr>
+                                <tr class="bg-emerald-50/30">
+                                    <td class="py-2.5 px-3">8,5 - 9,4</td>
+                                    <td class="py-2.5 px-3 text-center font-bold text-emerald-600">A</td>
+                                    <td class="py-2.5 px-3 text-right font-semibold text-emerald-600">Giỏi</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3">8,0 - 8,4</td>
+                                    <td class="py-2.5 px-3 text-center font-bold text-blue-600">B+</td>
+                                    <td class="py-2.5 px-3 text-right text-blue-600">Khá</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3">7,0 - 7,9</td>
+                                    <td class="py-2.5 px-3 text-center font-bold text-blue-500">B</td>
+                                    <td class="py-2.5 px-3 text-right text-blue-500">Khá</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3">6,5 - 6,9</td>
+                                    <td class="py-2.5 px-3 text-center font-bold text-amber-600">C+</td>
+                                    <td class="py-2.5 px-3 text-right text-amber-600">Trung bình</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3">5,5 - 6,4</td>
+                                    <td class="py-2.5 px-3 text-center font-bold text-amber-600">C</td>
+                                    <td class="py-2.5 px-3 text-right text-amber-600">Trung bình</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3">5,0 - 5,4</td>
+                                    <td class="py-2.5 px-3 text-center font-bold text-orange-600">D+</td>
+                                    <td class="py-2.5 px-3 text-right text-orange-600">Trung bình yếu</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3">4,0 - 4,9</td>
+                                    <td class="py-2.5 px-3 text-center font-bold text-orange-600">D</td>
+                                    <td class="py-2.5 px-3 text-right text-orange-600">Trung bình yếu</td>
+                                </tr>
+                                <tr class="bg-red-50 text-red-700">
+                                    <td class="py-3 px-3 font-bold text-xs bg-red-100 border-r border-slate-200">b) Loại không đạt</td>
+                                    <td class="py-2.5 px-3 font-medium">0,0 - 3,9</td>
+                                    <td class="py-2.5 px-3 text-center font-black">F</td>
+                                    <td class="py-2.5 px-3 text-right font-bold">Kém</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Table 2: Điểm chữ quy đổi Điểm Hệ Số 4 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="bg-slate-800 p-4 text-white font-bold flex items-center justify-between">
+                        <span><i class="fa-solid fa-calculator mr-2"></i>Cách Tính Điểm Trung Bình Chung (Hệ số 4)</span>
+                        <span class="text-xs bg-white/20 px-2.5 py-1 rounded-full">GPA Quy Đổi</span>
+                    </div>
+                    <div class="p-4">
+                        <table class="w-full text-left text-sm">
+                            <thead>
+                                <tr class="border-b border-slate-200 text-slate-500 uppercase text-xs">
+                                    <th class="py-3 px-4 text-center">Điểm chữ</th>
+                                    <th class="py-3 px-4 text-center">Điểm hệ số 4</th>
+                                    <th class="py-3 px-4 text-right">Đánh giá chung</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 font-medium text-center">
+                                <tr class="bg-emerald-50/50">
+                                    <td class="py-2.5 px-4 font-black text-emerald-700">A+</td>
+                                    <td class="py-2.5 px-4 font-extrabold text-emerald-700">4,0</td>
+                                    <td class="py-2.5 px-4 text-right text-xs font-bold text-emerald-600">Xuất sắc / Giỏi</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-bold text-emerald-600">A</td>
+                                    <td class="py-2.5 px-4 font-bold text-emerald-600">3,8</td>
+                                    <td class="py-2.5 px-4 text-right text-xs text-emerald-600">Giỏi</td>
+                                </tr>
+                                <tr class="bg-blue-50/50">
+                                    <td class="py-2.5 px-4 font-bold text-blue-600">B+</td>
+                                    <td class="py-2.5 px-4 font-bold text-blue-600">3,5</td>
+                                    <td class="py-2.5 px-4 text-right text-xs text-blue-600">Khá giỏi</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-bold text-blue-500">B</td>
+                                    <td class="py-2.5 px-4 font-bold text-blue-500">3,0</td>
+                                    <td class="py-2.5 px-4 text-right text-xs text-blue-500">Khá</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-bold text-amber-600">C+</td>
+                                    <td class="py-2.5 px-4 font-bold text-amber-600">2,5</td>
+                                    <td class="py-2.5 px-4 text-right text-xs text-amber-600">Trung bình khá</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-bold text-amber-600">C</td>
+                                    <td class="py-2.5 px-4 font-bold text-amber-600">2,0</td>
+                                    <td class="py-2.5 px-4 text-right text-xs text-amber-600">Trung bình</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-bold text-orange-600">D+</td>
+                                    <td class="py-2.5 px-4 font-bold text-orange-600">1,5</td>
+                                    <td class="py-2.5 px-4 text-right text-xs text-orange-600">Trung bình yếu</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-bold text-orange-600">D</td>
+                                    <td class="py-2.5 px-4 font-bold text-orange-600">1,0</td>
+                                    <td class="py-2.5 px-4 text-right text-xs text-orange-600">Trung bình yếu</td>
+                                </tr>
+                                <tr class="bg-red-50 text-red-700">
+                                    <td class="py-2.5 px-4 font-black">F</td>
+                                    <td class="py-2.5 px-4 font-black">0,0</td>
+                                    <td class="py-2.5 px-4 text-right text-xs font-bold">Kém (Học lại)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+            <div class="flex items-center justify-center space-x-2">
+                <span class="w-3 h-3 rounded-full bg-ctut-500 inline-block"></span>
+                <span class="font-extrabold text-white text-sm">CẨM NANG SINH VIÊN CTUT</span>
+            </div>
+            <p>Trường Đại học Kỹ thuật - Công nghệ Cần Thơ (Can Tho University of Technology)</p>
+            <p class="text-amber-400 font-bold">Ứng dụng được thiết kế & phát triển bởi tác giả NGUYEN TRUNG THANH</p>
+            <p class="text-slate-500 text-[11px]">&copy; 2026 CTUT Student Handbook. Tất cả dữ liệu chuẩn quy chế đào tạo.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // State Management
+        let savedSubjects = JSON.parse(localStorage.getItem('ctut_saved_subjects') || '[]');
+
+        // Initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            updateLiveClock();
+            setInterval(updateLiveClock, 1000);
+            renderSavedSubjects();
+            calculateGrade();
+        });
+
+        // Tab Switcher Logic
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            // Remove active classes on nav
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active-tab'));
+
+            // Show selected tab
+            const targetTab = document.getElementById(`tab-${tabName}`);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+            }
+
+            // Highlight nav button
+            const targetNav = document.getElementById(`nav-${tabName}`);
+            if (targetNav) {
+                targetNav.classList.add('active-tab');
+            }
+
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Synchronize Weight Selectors (Mid vs Final sum = 100%)
+        function syncWeight(source) {
+            const midSelect = document.getElementById('mid-weight');
+            const finalSelect = document.getElementById('final-weight');
+
+            if (source === 'mid') {
+                const midVal = parseInt(midSelect.value);
+                finalSelect.value = (100 - midVal).toString();
+            } else {
+                const finalVal = parseInt(finalSelect.value);
+                midSelect.value = (100 - finalVal).toString();
+            }
+            calculateGrade();
+        }
+
+        // Grade Threshold Mapping based on CTUT Rules
+        function getCTUTGradeDetails(score10) {
+            if (score10 >= 9.5) return { letter: 'A+', score4: 4.0, rank: 'Giỏi', pass: true, color: 'text-emerald-700' };
+            if (score10 >= 8.5) return { letter: 'A', score4: 3.8, rank: 'Giỏi', pass: true, color: 'text-emerald-600' };
+            if (score10 >= 8.0) return { letter: 'B+', score4: 3.5, rank: 'Khá', pass: true, color: 'text-blue-600' };
+            if (score10 >= 7.0) return { letter: 'B', score4: 3.0, rank: 'Khá', pass: true, color: 'text-blue-500' };
+            if (score10 >= 6.5) return { letter: 'C+', score4: 2.5, rank: 'Trung bình', pass: true, color: 'text-amber-600' };
+            if (score10 >= 5.5) return { letter: 'C', score4: 2.0, rank: 'Trung bình', pass: true, color: 'text-amber-600' };
+            if (score10 >= 5.0) return { letter: 'D+', score4: 1.5, rank: 'Trung bình yếu', pass: true, color: 'text-orange-600' };
+            if (score10 >= 4.0) return { letter: 'D', score4: 1.0, rank: 'Trung bình yếu', pass: true, color: 'text-orange-600' };
+            return { letter: 'F', score4: 0.0, rank: 'Kém', pass: false, color: 'text-red-600' };
+        }
+
+        // Get minimum score 10 threshold for target letter grade
+        function getMinScoreForTarget(target) {
+            switch(target) {
+                case 'A+': return 9.5;
+                case 'A': return 8.5;
+                case 'B+': return 8.0;
+                case 'B': return 7.0;
+                case 'C+': return 6.5;
+                case 'C': return 5.5;
+                case 'D': return 4.0;
+                default: return 8.5;
+            }
+        }
+
+        // Core Grade Calculator & Recommendation Logic
+        function calculateGrade() {
+            const subjectName = document.getElementById('subject-name').value.trim();
+            const midWeight = parseInt(document.getElementById('mid-weight').value) / 100;
+            const finalWeight = parseInt(document.getElementById('final-weight').value) / 100;
+            
+            const midInput = document.getElementById('mid-score').value;
+            const finalInput = document.getElementById('final-score').value;
+
+            const midScore = parseFloat(midInput);
+            const finalScore = parseFloat(finalInput);
+
+            // Update Subject Badge
+            document.getElementById('subject-display-badge').innerText = subjectName || 'Chưa đặt tên môn';
+
+            // Calculate current score if inputs exist
+            let total10 = 0;
+            const hasMid = !isNaN(midScore) && midScore >= 0 && midScore <= 10;
+            const hasFinal = !isNaN(finalScore) && finalScore >= 0 && finalScore <= 10;
+
+            if (hasMid && hasFinal) {
+                total10 = (midScore * midWeight) + (finalScore * finalWeight);
+                // Round to 2 decimal places
+                total10 = Math.round(total10 * 100) / 100;
+            } else if (hasMid && !hasFinal) {
+                total10 = (midScore * midWeight); // partial
+            }
+
+            const gradeDetails = getCTUTGradeDetails(total10);
+
+            // Update UI
+            document.getElementById('res-score10').innerText = hasMid && hasFinal ? total10.toFixed(1) : (hasMid ? `${total10.toFixed(1)}*` : '0.0');
+            document.getElementById('res-letter').innerText = hasMid && hasFinal ? gradeDetails.letter : '--';
+            document.getElementById('res-score4').innerText = hasMid && hasFinal ? gradeDetails.score4.toFixed(1) : '--';
+            document.getElementById('res-rank').innerText = hasMid && hasFinal ? gradeDetails.rank : 'Đang tính';
+            
+            const statusEl = document.getElementById('res-status');
+            if (hasMid && hasFinal) {
+                statusEl.innerText = gradeDetails.pass ? 'Đạt (Tích lũy)' : 'Không đạt (Kém)';
+                statusEl.className = gradeDetails.pass ? 'text-[10px] font-bold text-emerald-600' : 'text-[10px] font-bold text-red-600';
+            } else {
+                statusEl.innerText = 'Nhập đủ 2 cột điểm';
+                statusEl.className = 'text-[10px] font-bold text-slate-400';
+            }
+
+            // SMART ADVICE GENERATOR
+            const adviceEl = document.getElementById('smart-advice-text');
+            const targetGrade = document.getElementById('target-grade').value;
+            const targetMinScore = getMinScoreForTarget(targetGrade);
+
+            if (hasMid) {
+                // Formula: FinalScoreNeeded = (TargetMinScore - (MidScore * MidWeight)) / FinalWeight
+                const neededFinal = (targetMinScore - (midScore * midWeight)) / finalWeight;
+                const roundedNeeded = Math.ceil(neededFinal * 10) / 10; // Round up to 1 decimal place for safety
+
+                let adviceText = '';
+                if (roundedNeeded <= 0) {
+                    adviceText = `🎉 <b>Tuyệt vời!</b> Điểm giữa kỳ của bạn là <b>${midScore}</b> (hệ ${midWeight*100}%). Bạn <b>đã chắc chắn đạt mốc ${targetGrade}</b> mà không phụ thuộc vào điểm cuối kỳ (chỉ cần thi không bị 0 điểm). Hãy tự tin giữ vững phong độ!`;
+                } else if (roundedNeeded <= 10) {
+                    let evaluationMsg = '';
+                    if (roundedNeeded <= 5.0) evaluationMsg = 'Mục tiêu cực kỳ đơn giản và vừa sức!';
+                    else if (roundedNeeded <= 7.5) evaluationMsg = 'Mục tiêu hoàn toàn trong tầm tay nếu bạn ôn luyện kỹ!';
+                    else if (roundedNeeded <= 9.0) evaluationMsg = 'Cần tập trung ôn luyện nghiêm túc để bứt phá!';
+                    else evaluationMsg = 'Mục tiêu khá thách thức! Cần quyết tâm đạt điểm thi gần như tuyệt đối!';
+
+                    adviceText = `🎯 Với điểm Giữa Kỳ <b>${midScore}</b> (hệ ${midWeight*100}%), để đạt học phần loại <b>${targetGrade}</b> (từ ${targetMinScore} điểm trở lên), bạn cần thi <b>Cuối Kỳ tối thiểu ${roundedNeeded.toFixed(1)} điểm</b> (hệ ${finalWeight*100}%). <br><span class="text-ctut-700 font-semibold mt-1 inline-block">💡 Lời khuyên tác giả NGUYEN TRUNG THANH: ${evaluationMsg}</span>`;
+                } else {
+                    adviceText = `⚠️ <b>Lưu ý:</b> Với điểm giữa kỳ <b>${midScore}</b>, rất tiếc bạn <b>không thể đạt loại ${targetGrade}</b> (vì điểm thi cuối kỳ cần tới ${roundedNeeded.toFixed(1)} điểm, vượt quá thang điểm 10). Bạn có thể hạ mục tiêu xuống mức thấp hơn một chút hoặc cố gắng lấy điểm cộng môn học!`;
+                }
+
+                adviceEl.innerHTML = adviceText;
+            } else {
+                adviceEl.innerHTML = `Vui lòng nhập <b>Điểm Giữa Kỳ</b> để hệ thống tự động dự báo chính xác số điểm thi <b>Cuối Kỳ</b> bạn cần đạt cho mục tiêu loại <b>${targetGrade}</b>!`;
+            }
+        }
+
+        // Save Subject to List & LocalStorage
+        function saveCurrentSubject() {
+            const subjectName = document.getElementById('subject-name').value.trim();
+            const midScore = parseFloat(document.getElementById('mid-score').value);
+            const finalScore = parseFloat(document.getElementById('final-score').value);
+            const midWeight = parseInt(document.getElementById('mid-weight').value) / 100;
+            const finalWeight = parseInt(document.getElementById('final-weight').value) / 100;
+
+            if (!subjectName) {
+                alert('Vui lòng nhập Tên môn học trước khi lưu!');
+                return;
+            }
+            if (isNaN(midScore) || isNaN(finalScore)) {
+                alert('Vui lòng nhập đầy đủ cả điểm Giữa kỳ và Cuối kỳ để lưu môn!');
+                return;
+            }
+
+            const total10 = Math.round(((midScore * midWeight) + (finalScore * finalWeight)) * 100) / 100;
+            const details = getCTUTGradeDetails(total10);
+
+            const newSubject = {
+                id: Date.now(),
+                name: subjectName,
+                ratio: `${midWeight*100}%/${finalWeight*100}%`,
+                score10: total10,
+                letter: details.letter,
+                score4: details.score4,
+                rank: details.rank
+            };
+
+            savedSubjects.push(newSubject);
+            localStorage.setItem('ctut_saved_subjects', JSON.stringify(savedSubjects));
+            renderSavedSubjects();
+
+            // Clear inputs
+            document.getElementById('subject-name').value = '';
+            document.getElementById('mid-score').value = '';
+            document.getElementById('final-score').value = '';
+            calculateGrade();
+        }
+
+        // Render Saved Subjects
+        function renderSavedSubjects() {
+            const tbody = document.getElementById('saved-subjects-tbody');
+            const gpaBox = document.getElementById('gpa-summary-box');
+
+            if (savedSubjects.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-6 text-slate-400 italic">Chưa có môn học nào được lưu vào danh sách.</td></tr>`;
+                gpaBox.classList.add('hidden');
+                return;
+            }
+
+            let html = '';
+            let totalScore4 = 0;
+
+            savedSubjects.forEach((sub, index) => {
+                totalScore4 += sub.score4;
+                html += `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-2.5 px-3 font-bold text-slate-800">${sub.name}</td>
+                        <td class="py-2.5 px-3 text-center text-slate-500">${sub.ratio}</td>
+                        <td class="py-2.5 px-3 text-center font-bold text-ctut-700">${sub.score10.toFixed(1)}</td>
+                        <td class="py-2.5 px-3 text-center font-black text-ctut-600">${sub.letter}</td>
+                        <td class="py-2.5 px-3 text-center font-bold text-indigo-600">${sub.score4.toFixed(1)}</td>
+                        <td class="py-2.5 px-3 text-center">
+                            <button onclick="deleteSubject(${sub.id})" class="text-red-500 hover:text-red-700 p-1">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+
+            // Compute Semester Average GPA
+            const avgGPA = totalScore4 / savedSubjects.length;
+            document.getElementById('gpa-semester-val').innerText = avgGPA.toFixed(2);
+            
+            let gpaRank = 'Kém';
+            if (avgGPA >= 3.6) gpaRank = 'Xuất sắc';
+            else if (avgGPA >= 3.2) gpaRank = 'Giỏi';
+            else if (avgGPA >= 2.5) gpaRank = 'Khá';
+            else if (avgGPA >= 2.0) gpaRank = 'Trung bình';
+            else gpaRank = 'Yếu / Kém';
+
+            document.getElementById('gpa-semester-rank').innerText = `Xếp loại HK: ${gpaRank}`;
+            gpaBox.classList.remove('hidden');
+        }
+
+        function deleteSubject(id) {
+            savedSubjects = savedSubjects.filter(s => s.id !== id);
+            localStorage.setItem('ctut_saved_subjects', JSON.stringify(savedSubjects));
+            renderSavedSubjects();
+        }
+
+        function clearSavedSubjects() {
+            if (confirm('Bạn có chắc chắn muốn xóa toàn bộ danh sách môn đã lưu?')) {
+                savedSubjects = [];
+                localStorage.removeItem('ctut_saved_subjects');
+                renderSavedSubjects();
+            }
+        }
+
+        // Realtime Clock & Current Period Detector
+        function updateLiveClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            const clockEl = document.getElementById('live-clock');
+            if (clockEl) {
+                clockEl.innerText = `${hours}:${minutes}:${seconds}`;
+            }
+
+            // Determine active period
+            const currentMin = now.getHours() * 60 + now.getMinutes();
+            const badge = document.getElementById('current-period-badge');
+
+            if (!badge) return;
+
+            // Periods in minutes from midnight
+            const periods = [
+                { p: 1, start: 7*60+0, end: 7*60+50, name: 'Tiết 1 (Sáng: 07:00 - 07:50)' },
+                { p: 2, start: 7*60+50, end: 8*60+40, name: 'Tiết 2 (Sáng: 07:50 - 08:40)' },
+                { p: 3, start: 8*60+40, end: 9*60+30, name: 'Tiết 3 (Sáng: 08:40 - 09:30)' },
+                { break: true, start: 9*60+30, end: 9*60+45, name: 'Giờ nghỉ giải lao Sáng (09:30 - 09:45)' },
+                { p: 4, start: 9*60+45, end: 10*60+35, name: 'Tiết 4 (Sáng: 09:45 - 10:35)' },
+                { p: 5, start: 10*60+35, end: 11*60+25, name: 'Tiết 5 (Sáng: 10:35 - 11:25)' },
+                
+                { p: 6, start: 13*60+20, end: 14*60+10, name: 'Tiết 6 (Chiều: 13:20 - 14:10)' },
+                { p: 7, start: 14*60+10, end: 15*60+0, name: 'Tiết 7 (Chiều: 14:10 - 15:00)' },
+                { p: 8, start: 15*60+0, end: 15*60+50, name: 'Tiết 8 (Chiều: 15:00 - 15:50)' },
+                { break: true, start: 15*60+50, end: 16*60+5, name: 'Giờ nghỉ giải lao Chiều (15:50 - 16:05)' },
+                { p: 9, start: 16*60+5, end: 16*60+55, name: 'Tiết 9 (Chiều: 16:05 - 16:55)' },
+                { p: 10, start: 16*60+55, end: 17*60+45, name: 'Tiết 10 (Chiều: 16:55 - 17:45)' },
+                
+                { p: 11, start: 18*60+20, end: 19*60+10, name: 'Tiết 11 (Tối: 18:20 - 19:10)' },
+                { p: 12, start: 19*60+10, end: 20*60+0, name: 'Tiết 12 (Tối: 19:10 - 20:00)' },
+                { p: 13, start: 20*60+5, end: 20*60+55, name: 'Tiết 13 (Tối: 20:05 - 20:55)' }
+            ];
+
+            let activeText = 'Hiện ngoài giờ học chính quy';
+            let activeColor = 'bg-slate-800 border-slate-700 text-slate-300';
+
+            for (const item of periods) {
+                if (currentMin >= item.start && currentMin < item.end) {
+                    if (item.break) {
+                        activeText = `☕ ${item.name}`;
+                        activeColor = 'bg-amber-500 text-slate-900 font-black';
+                    } else {
+                        activeText = `🔔 BÂY GIỜ LÀ: ${item.name}`;
+                        activeColor = 'bg-emerald-500 text-white font-black animate-pulse';
+                    }
+                    break;
+                }
+            }
+
+            badge.className = `inline-block px-4 py-2 rounded-xl text-xs font-extrabold border shadow-sm ${activeColor}`;
+            badge.innerHTML = activeText;
+        }
+    </script>
+</body>
+</html>
