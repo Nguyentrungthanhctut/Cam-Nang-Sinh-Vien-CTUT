@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cẩm Nang Sinh Viên CTUT - Tác giả  NGUYEN TRUNG THANH</title>
+    <title>Cẩm Nang Sinh Viên CTUT - Tác giả NGUYEN TRUNG THANH (Thanhdev Hub)</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -54,17 +55,27 @@
     <header class="gradient-ctut text-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo & Brand -->
+                <!-- Co-branding Logo & Title -->
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center p-1 shadow-md border-2 border-amber-400">
-                        <!-- Logo Placeholder / Symbol -->
-                        <div class="text-ctut-700 font-black text-xl tracking-tighter">CTUT</div>
+                    <!-- Cụm Logo Hợp Tác: CTUT x Thanhdev Hub (logo.jpg) -->
+                    <div class="flex items-center bg-white/10 backdrop-blur-sm px-2.5 py-1.5 rounded-full border border-white/25 shadow-inner space-x-2">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center p-1 shadow-md border-2 border-amber-400 shrink-0">
+                            <div class="text-ctut-700 font-black text-sm tracking-tighter">CTUT</div>
+                        </div>
+                        <span class="text-amber-300 font-black text-xs select-none" title="Hợp tác phát triển"><i class="fa-solid fa-xmark"></i></span>
+                        <div class="w-10 h-10 bg-slate-900 rounded-full overflow-hidden flex items-center justify-center shadow-md border-2 border-amber-400 shrink-0">
+                            <img src="logo.jpg" alt="Thanhdev Hub Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="hidden w-full h-full items-center justify-center text-amber-400 font-black text-[10px]">TDH</div>
+                        </div>
                     </div>
+
                     <div>
-                        <h1 class="font-extrabold text-lg sm:text-xl tracking-wide uppercase leading-tight">CẨM NANG SINH VIÊN CTUT</h1>
-                        <p class="text-xs text-blue-100 flex items-center space-x-1">
-                            <span>Đại học Kỹ thuật - Công nghệ Cần Thơ</span>
-                            <span class="bg-amber-400 text-slate-900 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full ml-1">Tác giả: NGUYEN TRUNG THANH</span>
+                        <h1 class="font-extrabold text-base sm:text-xl tracking-wide uppercase leading-tight">CẨM NANG SINH VIÊN CTUT</h1>
+                        <p class="text-xs text-blue-100 flex flex-wrap items-center gap-1 mt-0.5">
+                            <span class="hidden sm:inline">Đại học Kỹ thuật - Công nghệ Cần Thơ</span>
+                            <span class="bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full shadow-sm">
+                                Tác giả: NGUYEN TRUNG THANH (Thanhdev Hub)
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -122,7 +133,12 @@
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
                 <div class="max-w-2xl relative z-10 space-y-4">
-                    <span class="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Phiên bản tiện ích sinh viên</span>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Phiên bản tiện ích sinh viên</span>
+                        <span class="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
+                            <i class="fa-solid fa-handshake mr-1 text-amber-300"></i>CTUT × Thanhdev Hub
+                        </span>
+                    </div>
                     <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight">Chào mừng bạn đến với Cẩm Nang Sinh Viên CTUT</h2>
                     <p class="text-blue-100 text-sm sm:text-base leading-relaxed">
                         Công cụ hỗ trợ học tập đắc lực dành cho sinh viên Trường Đại học Kỹ thuật - Công nghệ Cần Thơ. Tra cứu thời khóa biểu tiết học, tính toán điểm số chính xác và dự báo điểm thi để tối ưu hóa kết quả học tập.
@@ -140,21 +156,31 @@
 
             <!-- Author Badge & Feature Highlights -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Author Card -->
+                <!-- Author Card with Collaboration Logo -->
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-ctut-50 text-ctut-600 rounded-xl flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-user-pen"></i>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <img src="logo.jpg" alt="Logo Thanhdev Hub" class="w-12 h-12 rounded-xl object-cover border-2 border-ctut-500 shadow-sm" onerror="this.src='https://ui-avatars.com/api/?name=Thanhdev+Hub&background=003375&color=fff'">
+                                <span class="text-xs font-extrabold text-ctut-700 bg-ctut-50 px-2.5 py-1 rounded-lg border border-ctut-100">
+                                    CTUT × Thanhdev Hub
+                                </span>
+                            </div>
+                            <div class="w-9 h-9 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center text-sm">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800">Tác giả thực hiện</h3>
-                        <p class="text-2xl font-extrabold text-ctut-600 mt-1"> NGUYEN TRUNG THANH</p>
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Tác giả thực hiện</h3>
+                        <p class="text-lg sm:text-xl font-extrabold text-ctut-700 mt-1 leading-snug">
+                            NGUYEN TRUNG THANH <span class="block text-sm font-bold text-amber-600">(Thanhdev Hub)</span>
+                        </p>
                         <p class="text-xs text-slate-500 mt-2 leading-relaxed">
                             Ứng dụng được xây dựng nhằm mang tới giải pháp tra cứu & quản lý học tập thông minh, chính xác chuẩn theo quy chế đào tạo tín chỉ của CTUT.
                         </p>
                     </div>
                     <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-                        <span><i class="fa-solid fa-shield-halved mr-1"></i>Dữ liệu chuẩn quy chế</span>
-                        <span class="text-ctut-600 font-medium">CTUT 2026</span>
+                        <span><i class="fa-solid fa-shield-halved mr-1 text-emerald-500"></i>Dữ liệu chuẩn quy chế</span>
+                        <span class="text-ctut-600 font-bold">CTUT 2026</span>
                     </div>
                 </div>
 
@@ -719,13 +745,18 @@
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-            <div class="flex items-center justify-center space-x-2">
-                <span class="w-3 h-3 rounded-full bg-ctut-500 inline-block"></span>
-                <span class="font-extrabold text-white text-sm">CẨM NANG SINH VIÊN CTUT</span>
+            <!-- Co-brand Footer -->
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-white text-ctut-800 font-black text-[10px] flex items-center justify-center border border-amber-400">CTUT</div>
+                <span class="text-amber-400 font-bold"><i class="fa-solid fa-xmark"></i></span>
+                <img src="logo.jpg" alt="Thanhdev Hub" class="w-8 h-8 rounded-full object-cover border border-amber-400" onerror="this.style.display='none'">
+                <span class="font-extrabold text-white text-sm tracking-wide">CẨM NANG SINH VIÊN CTUT</span>
             </div>
             <p>Trường Đại học Kỹ thuật - Công nghệ Cần Thơ (Can Tho University of Technology)</p>
-            <p class="text-amber-400 font-bold">Ứng dụng được thiết kế & phát triển bởi tác giả ThanhDev Hub</p>
-            <p class="text-slate-500 text-[11px]">&copy; 2026 CTUT Student Handbook. Tất cả dữ liệu chuẩn quy chế đào tạo.</p>
+            <p class="text-amber-400 font-bold text-sm">
+                Tác giả thực hiện: NGUYEN TRUNG THANH (Thanhdev Hub)
+            </p>
+            <p class="text-slate-500 text-[11px]">&copy; 2026 CTUT × Thanhdev Hub. Tất cả dữ liệu chuẩn quy chế đào tạo.</p>
         </div>
     </footer>
 
@@ -744,27 +775,20 @@
 
         // Tab Switcher Logic
         function switchTab(tabName) {
-            // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            
-            // Remove active classes on nav
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active-tab'));
 
-            // Show selected tab
             const targetTab = document.getElementById(`tab-${tabName}`);
             if (targetTab) {
                 targetTab.classList.remove('hidden');
             }
 
-            // Highlight nav button
             const targetNav = document.getElementById(`nav-${tabName}`);
             if (targetNav) {
                 targetNav.classList.add('active-tab');
             }
 
-            // Close mobile menu if open
             document.getElementById('mobile-menu').classList.add('hidden');
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -827,25 +851,21 @@
             const midScore = parseFloat(midInput);
             const finalScore = parseFloat(finalInput);
 
-            // Update Subject Badge
             document.getElementById('subject-display-badge').innerText = subjectName || 'Chưa đặt tên môn';
 
-            // Calculate current score if inputs exist
             let total10 = 0;
             const hasMid = !isNaN(midScore) && midScore >= 0 && midScore <= 10;
             const hasFinal = !isNaN(finalScore) && finalScore >= 0 && finalScore <= 10;
 
             if (hasMid && hasFinal) {
                 total10 = (midScore * midWeight) + (finalScore * finalWeight);
-                // Round to 2 decimal places
                 total10 = Math.round(total10 * 100) / 100;
             } else if (hasMid && !hasFinal) {
-                total10 = (midScore * midWeight); // partial
+                total10 = (midScore * midWeight);
             }
 
             const gradeDetails = getCTUTGradeDetails(total10);
 
-            // Update UI
             document.getElementById('res-score10').innerText = hasMid && hasFinal ? total10.toFixed(1) : (hasMid ? `${total10.toFixed(1)}*` : '0.0');
             document.getElementById('res-letter').innerText = hasMid && hasFinal ? gradeDetails.letter : '--';
             document.getElementById('res-score4').innerText = hasMid && hasFinal ? gradeDetails.score4.toFixed(1) : '--';
@@ -866,9 +886,8 @@
             const targetMinScore = getMinScoreForTarget(targetGrade);
 
             if (hasMid) {
-                // Formula: FinalScoreNeeded = (TargetMinScore - (MidScore * MidWeight)) / FinalWeight
                 const neededFinal = (targetMinScore - (midScore * midWeight)) / finalWeight;
-                const roundedNeeded = Math.ceil(neededFinal * 10) / 10; // Round up to 1 decimal place for safety
+                const roundedNeeded = Math.ceil(neededFinal * 10) / 10;
 
                 let adviceText = '';
                 if (roundedNeeded <= 0) {
@@ -880,7 +899,7 @@
                     else if (roundedNeeded <= 9.0) evaluationMsg = 'Cần tập trung ôn luyện nghiêm túc để bứt phá!';
                     else evaluationMsg = 'Mục tiêu khá thách thức! Cần quyết tâm đạt điểm thi gần như tuyệt đối!';
 
-                    adviceText = `🎯 Với điểm Giữa Kỳ <b>${midScore}</b> (hệ ${midWeight*100}%), để đạt học phần loại <b>${targetGrade}</b> (từ ${targetMinScore} điểm trở lên), bạn cần thi <b>Cuối Kỳ tối thiểu ${roundedNeeded.toFixed(1)} điểm</b> (hệ ${finalWeight*100}%). <br><span class="text-ctut-700 font-semibold mt-1 inline-block">💡 Lời khuyên tác giả NGUYEN TRUNG THANH: ${evaluationMsg}</span>`;
+                    adviceText = `🎯 Với điểm Giữa Kỳ <b>${midScore}</b> (hệ ${midWeight*100}%), để đạt học phần loại <b>${targetGrade}</b> (từ ${targetMinScore} điểm trở lên), bạn cần thi <b>Cuối Kỳ tối thiểu ${roundedNeeded.toFixed(1)} điểm</b> (hệ ${finalWeight*100}%). <br><span class="text-ctut-700 font-semibold mt-1 inline-block">💡 Lời khuyên tác giả NGUYEN TRUNG THANH (Thanhdev Hub): ${evaluationMsg}</span>`;
                 } else {
                     adviceText = `⚠️ <b>Lưu ý:</b> Với điểm giữa kỳ <b>${midScore}</b>, rất tiếc bạn <b>không thể đạt loại ${targetGrade}</b> (vì điểm thi cuối kỳ cần tới ${roundedNeeded.toFixed(1)} điểm, vượt quá thang điểm 10). Bạn có thể hạ mục tiêu xuống mức thấp hơn một chút hoặc cố gắng lấy điểm cộng môn học!`;
                 }
@@ -925,7 +944,6 @@
             localStorage.setItem('ctut_saved_subjects', JSON.stringify(savedSubjects));
             renderSavedSubjects();
 
-            // Clear inputs
             document.getElementById('subject-name').value = '';
             document.getElementById('mid-score').value = '';
             document.getElementById('final-score').value = '';
@@ -946,7 +964,7 @@
             let html = '';
             let totalScore4 = 0;
 
-            savedSubjects.forEach((sub, index) => {
+            savedSubjects.forEach((sub) => {
                 totalScore4 += sub.score4;
                 html += `
                     <tr class="hover:bg-slate-50 transition">
@@ -966,7 +984,6 @@
 
             tbody.innerHTML = html;
 
-            // Compute Semester Average GPA
             const avgGPA = totalScore4 / savedSubjects.length;
             document.getElementById('gpa-semester-val').innerText = avgGPA.toFixed(2);
             
@@ -1007,13 +1024,11 @@
                 clockEl.innerText = `${hours}:${minutes}:${seconds}`;
             }
 
-            // Determine active period
             const currentMin = now.getHours() * 60 + now.getMinutes();
             const badge = document.getElementById('current-period-badge');
 
             if (!badge) return;
 
-            // Periods in minutes from midnight
             const periods = [
                 { p: 1, start: 7*60+0, end: 7*60+50, name: 'Tiết 1 (Sáng: 07:00 - 07:50)' },
                 { p: 2, start: 7*60+50, end: 8*60+40, name: 'Tiết 2 (Sáng: 07:50 - 08:40)' },
