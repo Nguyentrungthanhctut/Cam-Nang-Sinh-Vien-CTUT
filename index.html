@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cẩm Nang Sinh Viên CTUT - Tác giả NGUYEN TRUNG THANH (Thanhdev Hub)</title>
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="icon" type="image/jpeg" href="logoctut.jpg">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -57,10 +57,11 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Co-branding Logo & Title -->
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
-                    <!-- Cụm Logo Hợp Tác: CTUT x Thanhdev Hub (logo.jpg) -->
+                    <!-- Cụm Logo Hợp Tác: CTUT (logoctut.jpg) x Thanhdev Hub (logo.jpg) -->
                     <div class="flex items-center bg-white/10 backdrop-blur-sm px-2.5 py-1.5 rounded-full border border-white/25 shadow-inner space-x-2">
-                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center p-1 shadow-md border-2 border-amber-400 shrink-0">
-                            <div class="text-ctut-700 font-black text-sm tracking-tighter">CTUT</div>
+                        <div class="w-10 h-10 bg-white rounded-full overflow-hidden flex items-center justify-center shadow-md border-2 border-amber-400 shrink-0">
+                            <img src="logoctut.jpg" alt="Logo CTUT" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="hidden w-full h-full items-center justify-center text-ctut-700 font-black text-xs tracking-tighter">CTUT</div>
                         </div>
                         <span class="text-amber-300 font-black text-xs select-none" title="Hợp tác phát triển"><i class="fa-solid fa-xmark"></i></span>
                         <div class="w-10 h-10 bg-slate-900 rounded-full overflow-hidden flex items-center justify-center shadow-md border-2 border-amber-400 shrink-0">
@@ -81,23 +82,26 @@
                 </div>
 
                 <!-- Desktop Nav -->
-                <nav class="hidden md:flex space-x-2">
-                    <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10 active-tab">
-                        <i class="fa-solid fa-house mr-2"></i>Trang chủ
+                <nav class="hidden lg:flex space-x-1.5">
+                    <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10 active-tab">
+                        <i class="fa-solid fa-house mr-1.5"></i>Trang chủ
                     </button>
-                    <button onclick="switchTab('schedule')" id="nav-schedule" class="nav-btn px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10">
-                        <i class="fa-regular fa-clock mr-2"></i>Thời gian dạy học
+                    <button onclick="switchTab('schedule')" id="nav-schedule" class="nav-btn px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10">
+                        <i class="fa-regular fa-clock mr-1.5"></i>Giờ học
                     </button>
-                    <button onclick="switchTab('calculator')" id="nav-calculator" class="nav-btn px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10">
-                        <i class="fa-solid fa-calculator mr-2"></i>Tính điểm & Dự báo
+                    <button onclick="switchTab('calculator')" id="nav-calculator" class="nav-btn px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10">
+                        <i class="fa-solid fa-calculator mr-1.5"></i>Tính điểm
                     </button>
-                    <button onclick="switchTab('grading-scale')" id="nav-grading-scale" class="nav-btn px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10">
-                        <i class="fa-solid fa-table-list mr-2"></i>Thang điểm CTUT
+                    <button onclick="switchTab('scholarship')" id="nav-scholarship" class="nav-btn px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10">
+                        <i class="fa-solid fa-award mr-1.5 text-amber-300"></i>Xét học bổng
+                    </button>
+                    <button onclick="switchTab('grading-scale')" id="nav-grading-scale" class="nav-btn px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/10">
+                        <i class="fa-solid fa-table-list mr-1.5"></i>Thang điểm
                     </button>
                 </nav>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
+                <div class="lg:hidden flex items-center">
                     <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg hover:bg-white/10 focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
@@ -106,7 +110,7 @@
         </div>
 
         <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-ctut-800 border-t border-ctut-600 px-4 pt-2 pb-4 space-y-2 shadow-xl">
+        <div id="mobile-menu" class="hidden lg:hidden bg-ctut-800 border-t border-ctut-600 px-4 pt-2 pb-4 space-y-2 shadow-xl">
             <button onclick="switchTab('home')" class="w-full text-left px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-white/10 flex items-center">
                 <i class="fa-solid fa-house w-6"></i>Trang chủ
             </button>
@@ -115,6 +119,9 @@
             </button>
             <button onclick="switchTab('calculator')" class="w-full text-left px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-white/10 flex items-center">
                 <i class="fa-solid fa-calculator w-6"></i>Tính điểm & Dự báo
+            </button>
+            <button onclick="switchTab('scholarship')" class="w-full text-left px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-white/10 flex items-center text-amber-300 font-bold">
+                <i class="fa-solid fa-award w-6"></i>Điều kiện Học bổng (QĐ 591)
             </button>
             <button onclick="switchTab('grading-scale')" class="w-full text-left px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-white/10 flex items-center">
                 <i class="fa-solid fa-table-list w-6"></i>Thang điểm CTUT
@@ -141,13 +148,16 @@
                     </div>
                     <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight">Chào mừng bạn đến với Cẩm Nang Sinh Viên CTUT</h2>
                     <p class="text-blue-100 text-sm sm:text-base leading-relaxed">
-                        Công cụ hỗ trợ học tập đắc lực dành cho sinh viên Trường Đại học Kỹ thuật - Công nghệ Cần Thơ. Tra cứu thời khóa biểu tiết học, tính toán điểm số chính xác và dự báo điểm thi để tối ưu hóa kết quả học tập.
+                        Công cụ hỗ trợ học tập dành cho sinh viên Trường Đại học Kỹ thuật - Công nghệ Cần Thơ: tra cứu khung giờ tiết học, tính toán dự báo điểm số và kiểm tra điều kiện xét học bổng khuyến khích học tập theo QĐ 591/QĐ-ĐHKTCN.
                     </p>
                     <div class="pt-2 flex flex-wrap gap-3">
-                        <button onclick="switchTab('calculator')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center">
-                            <i class="fa-solid fa-calculator mr-2"></i>Tính điểm môn học ngay
+                        <button onclick="switchTab('calculator')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-5 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center text-sm">
+                            <i class="fa-solid fa-calculator mr-2"></i>Tính điểm môn học
                         </button>
-                        <button onclick="switchTab('schedule')" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl backdrop-blur-sm transition flex items-center">
+                        <button onclick="switchTab('scholarship')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center text-sm">
+                            <i class="fa-solid fa-award mr-2"></i>Kiểm tra học bổng
+                        </button>
+                        <button onclick="switchTab('schedule')" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-3 rounded-xl backdrop-blur-sm transition flex items-center text-sm">
                             <i class="fa-regular fa-clock mr-2"></i>Xem giờ tiết học
                         </button>
                     </div>
@@ -155,31 +165,29 @@
             </div>
 
             <!-- Author Badge & Feature Highlights -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Author Card with Collaboration Logo -->
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="flex items-center space-x-2">
-                                <img src="logo.jpg" alt="Logo Thanhdev Hub" class="w-12 h-12 rounded-xl object-cover border-2 border-ctut-500 shadow-sm" onerror="this.src='https://ui-avatars.com/api/?name=Thanhdev+Hub&background=003375&color=fff'">
-                                <span class="text-xs font-extrabold text-ctut-700 bg-ctut-50 px-2.5 py-1 rounded-lg border border-ctut-100">
-                                    CTUT × Thanhdev Hub
-                                </span>
+                            <div class="flex items-center space-x-1.5">
+                                <img src="logoctut.jpg" alt="Logo CTUT" class="w-10 h-10 rounded-full object-cover border-2 border-ctut-500 shadow-sm" onerror="this.style.display='none'">
+                                <img src="logo.jpg" alt="Logo Thanhdev Hub" class="w-10 h-10 rounded-full object-cover border-2 border-amber-400 shadow-sm" onerror="this.src='https://ui-avatars.com/api/?name=Thanhdev+Hub&background=003375&color=fff'">
                             </div>
-                            <div class="w-9 h-9 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center text-sm">
+                            <div class="w-8 h-8 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center text-xs">
                                 <i class="fa-solid fa-code"></i>
                             </div>
                         </div>
                         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Tác giả thực hiện</h3>
-                        <p class="text-lg sm:text-xl font-extrabold text-ctut-700 mt-1 leading-snug">
-                            NGUYEN TRUNG THANH <span class="block text-sm font-bold text-amber-600">(Thanhdev Hub)</span>
+                        <p class="text-base font-extrabold text-ctut-700 mt-1 leading-snug">
+                            NGUYEN TRUNG THANH <span class="block text-xs font-bold text-amber-600">(Thanhdev Hub)</span>
                         </p>
                         <p class="text-xs text-slate-500 mt-2 leading-relaxed">
-                            Ứng dụng được xây dựng nhằm mang tới giải pháp tra cứu & quản lý học tập thông minh, chính xác chuẩn theo quy chế đào tạo tín chỉ của CTUT.
+                            Dữ liệu chuẩn theo quy chế đào tạo & xét học bổng chính quy của CTUT.
                         </p>
                     </div>
                     <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-                        <span><i class="fa-solid fa-shield-halved mr-1 text-emerald-500"></i>Dữ liệu chuẩn quy chế</span>
+                        <span><i class="fa-solid fa-shield-halved mr-1 text-emerald-500"></i>Chuẩn quy chế</span>
                         <span class="text-ctut-600 font-bold">CTUT 2026</span>
                     </div>
                 </div>
@@ -192,27 +200,43 @@
                         </div>
                         <h3 class="text-lg font-bold text-slate-800">Khung Giờ Tiết Học</h3>
                         <p class="text-sm text-slate-600 mt-2">
-                            Xem chi tiết thời gian bắt đầu, kết thúc và thời gian nghỉ của 13 tiết học Sáng - Chiều - Tối.
+                            Chi tiết thời gian bắt đầu, kết thúc và nghỉ giải lao của 13 tiết Sáng - Chiều - Tối.
                         </p>
                     </div>
                     <button onclick="switchTab('schedule')" class="mt-4 text-ctut-600 hover:text-ctut-800 text-sm font-bold flex items-center">
-                        Xem chi tiết khung giờ <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        Xem khung giờ <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
                     </button>
                 </div>
 
                 <!-- Calculator Card -->
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                        <div class="w-12 h-12 bg-blue-50 text-ctut-600 rounded-xl flex items-center justify-center text-xl mb-4">
                             <i class="fa-solid fa-chart-line"></i>
                         </div>
                         <h3 class="text-lg font-bold text-slate-800">Tính Điểm & Dự Báo</h3>
                         <p class="text-sm text-slate-600 mt-2">
-                            Tính điểm hệ 10, hệ 4, xếp loại học phần và đưa ra gợi ý điểm thi cuối kỳ cần đạt để có tấm bằng đẹp.
+                            Tính điểm hệ 10, hệ 4, lưu GPA học kỳ và dự báo điểm thi cuối kỳ cần đạt.
                         </p>
                     </div>
                     <button onclick="switchTab('calculator')" class="mt-4 text-ctut-600 hover:text-ctut-800 text-sm font-bold flex items-center">
-                        Tính điểm & gợi ý ngay <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        Tính điểm ngay <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Scholarship Card -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Xét Học Bổng KKHT</h3>
+                        <p class="text-sm text-slate-600 mt-2">
+                            Kiểm tra điều kiện nhận học bổng loại Khá, Giỏi, Xuất sắc theo QĐ 591/QĐ-ĐHKTCN.
+                        </p>
+                    </div>
+                    <button onclick="switchTab('scholarship')" class="mt-4 text-emerald-600 hover:text-emerald-800 text-sm font-bold flex items-center">
+                        Kiểm tra điều kiện <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
                     </button>
                 </div>
             </div>
@@ -241,7 +265,7 @@
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-4">
                 <div>
                     <h2 class="text-2xl font-bold text-slate-900 flex items-center">
-                        <i class="fa-solid fa-clock text-ctut-600 mr-3"></i>Thời Gian Dạy Học Standard CTUT
+                        <i class="fa-solid fa-clock text-ctut-600 mr-3"></i>Thời Gian Dạy Học Chuẩn CTUT
                     </h2>
                     <p class="text-sm text-slate-500">Khung thời gian các tiết học chuẩn của Trường ĐH Kỹ thuật - Công nghệ Cần Thơ</p>
                 </div>
@@ -577,13 +601,16 @@
                         </div>
 
                         <!-- Summary GPA Card -->
-                        <div id="gpa-summary-box" class="hidden bg-slate-900 text-white p-4 rounded-xl flex items-center justify-between">
+                        <div id="gpa-summary-box" class="hidden bg-slate-900 text-white p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-3">
                             <div>
                                 <span class="text-xs text-slate-400 uppercase font-semibold">Trung Bình Chung Học Kỳ (GPA Hệ 4)</span>
                                 <div id="gpa-semester-val" class="text-2xl font-black text-amber-400">0.00</div>
                             </div>
-                            <div class="text-right">
-                                <span id="gpa-semester-rank" class="bg-ctut-500 text-white text-xs font-bold px-3 py-1 rounded-full">Chưa xếp loại</span>
+                            <div class="flex items-center gap-2">
+                                <span id="gpa-semester-rank" class="bg-ctut-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">Chưa xếp loại</span>
+                                <button onclick="syncGPAToScholarship()" class="bg-amber-400 hover:bg-amber-500 text-slate-900 text-xs font-extrabold px-3 py-1.5 rounded-full transition">
+                                    <i class="fa-solid fa-award mr-1"></i>Xét học bổng ngay
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -591,7 +618,160 @@
             </div>
         </section>
 
-        <!-- ================= TAB 4: THANG ĐIỂM CHUẨN CTUT ================= -->
+        <!-- ================= TAB 4: ĐIỀU KIỆN XÉT HỌC BỔNG (QĐ 591/QĐ-ĐHKTCN) ================= -->
+        <section id="tab-scholarship" class="tab-content hidden space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center">
+                        <i class="fa-solid fa-award text-amber-500 mr-3"></i>Điều Kiện Học Bổng Khuyến Khích Học Tập
+                    </h2>
+                    <p class="text-sm text-slate-500">Áp dụng theo Quyết định số <b>591/QĐ-ĐHKTCN</b> của Hiệu trưởng Trường ĐH Kỹ thuật - Công nghệ Cần Thơ</p>
+                </div>
+                <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-3.5 py-1.5 rounded-xl text-xs font-bold self-start">
+                    <i class="fa-solid fa-file-contract mr-1.5"></i>QĐ 591/QĐ-ĐHKTCN
+                </span>
+            </div>
+
+            <!-- Interactive Scholarship Checker -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Input Parameters -->
+                <div class="lg:col-span-5 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                    <h3 class="text-base font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center">
+                        <i class="fa-solid fa-sliders text-ctut-600 mr-2"></i>Công Cụ Tự Kiểm Tra Đủ Điều Kiện
+                    </h3>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">GPA Học kỳ (Hệ 4)</label>
+                            <input type="number" id="hb-gpa" step="0.01" min="0" max="4" value="3.45" oninput="evaluateScholarship()"
+                                class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl font-bold text-ctut-700 text-sm focus:ring-2 focus:ring-ctut-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Điểm rèn luyện (ĐRL)</label>
+                            <input type="number" id="hb-drl" step="1" min="0" max="100" value="85" oninput="evaluateScholarship()"
+                                class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl font-bold text-emerald-700 text-sm focus:ring-2 focus:ring-ctut-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Số tín chỉ đăng ký</label>
+                            <input type="number" id="hb-credits" step="1" min="0" max="40" value="18" oninput="evaluateScholarship()"
+                                class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl font-bold text-slate-800 text-sm focus:ring-2 focus:ring-ctut-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Loại học kỳ</label>
+                            <select id="hb-semester-type" onchange="evaluateScholarship()"
+                                class="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl font-semibold text-slate-800 text-xs focus:ring-2 focus:ring-ctut-500">
+                                <option value="main" selected>Học kỳ chính</option>
+                                <option value="final">Học kỳ cuối khóa</option>
+                                <option value="summer">Học kỳ phụ (Hè)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Checkboxes for mandatory conditions -->
+                    <div class="space-y-2.5 pt-2 border-t border-slate-100 text-xs">
+                        <label class="flex items-start space-x-2.5 cursor-pointer">
+                            <input type="checkbox" id="hb-regular" checked onchange="evaluateScholarship()" class="mt-0.5 rounded text-ctut-600 focus:ring-ctut-500">
+                            <span class="text-slate-700 font-medium">Là sinh viên <b>đại học chính quy</b> (không thuộc diện văn bằng 2 hoặc liên thông).</span>
+                        </label>
+                        <label class="flex items-start space-x-2.5 cursor-pointer">
+                            <input type="checkbox" id="hb-first-attempt" checked onchange="evaluateScholarship()" class="mt-0.5 rounded text-ctut-600 focus:ring-ctut-500">
+                            <span class="text-slate-700 font-medium">Tất cả học phần đều thi/kiểm tra <b>lần thứ nhất</b>, không có môn nào dưới <b>1,5</b> (hệ 4) hoặc dưới <b>5,0</b> (hệ 10).</span>
+                        </label>
+                        <label class="flex items-start space-x-2.5 cursor-pointer">
+                            <input type="checkbox" id="hb-no-discipline" checked onchange="evaluateScholarship()" class="mt-0.5 rounded text-ctut-600 focus:ring-ctut-500">
+                            <span class="text-slate-700 font-medium"><b>Không bị kỷ luật</b> từ mức khiển trách trở lên.</span>
+                        </label>
+                        <label class="flex items-start space-x-2.5 cursor-pointer bg-amber-50 p-2.5 rounded-xl border border-amber-200">
+                            <input type="checkbox" id="hb-priority" onchange="evaluateScholarship()" class="mt-0.5 rounded text-amber-600 focus:ring-amber-500">
+                            <span class="text-amber-900 font-semibold">Có giấy xác nhận thuộc diện ưu tiên: <b>Gia đình chính sách (GĐCS), Hộ nghèo (HN), Hộ cận nghèo (HCN), Hoàn cảnh khó khăn đột xuất (HCKK)</b>.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Evaluation Result & Rule Summary -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Dynamic Result Banner -->
+                    <div id="hb-result-card" class="bg-white p-6 rounded-2xl shadow-sm border-2 border-emerald-200 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Kết quả đối chiếu quy chế</span>
+                            <span id="hb-status-badge" class="bg-emerald-100 text-emerald-800 text-xs font-extrabold px-3 py-1 rounded-full">ĐỦ ĐIỀU KIỆN XÉT</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div>
+                                <div class="text-xs text-slate-500 font-semibold">Mức học bổng đủ chuẩn đạt được:</div>
+                                <div id="hb-tier-title" class="text-2xl font-black text-ctut-700 mt-0.5">Học bổng Loại Giỏi</div>
+                            </div>
+                            <div class="sm:text-right">
+                                <div class="text-xs text-slate-500 font-semibold">Định mức giá trị (Điều 4):</div>
+                                <div id="hb-value-formula" class="text-base font-extrabold text-amber-600 mt-0.5">1,1 × Mức học bổng Khá</div>
+                            </div>
+                        </div>
+                        <div id="hb-explanation" class="text-sm text-slate-700 leading-relaxed">
+                            Đang phân tích...
+                        </div>
+                    </div>
+
+                    <!-- Regulation Matrix Table (Điều 3 & Điều 4) -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                        <div class="gradient-ctut p-4 text-white font-bold flex items-center justify-between">
+                            <span><i class="fa-solid fa-scale-balanced mr-2"></i>Bảng Xếp Loại & Định Mức Học Bổng (Điều 3 & 4)</span>
+                            <span class="text-xs bg-white/20 px-2.5 py-1 rounded-full">05 tháng / học kỳ</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs sm:text-sm">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-600 uppercase text-xs border-b border-slate-200">
+                                        <th class="py-3 px-4 font-bold">Loại học bổng</th>
+                                        <th class="py-3 px-4 font-bold">Điểm học tập</th>
+                                        <th class="py-3 px-4 font-bold">Điểm rèn luyện</th>
+                                        <th class="py-3 px-4 font-bold text-right">Mức học bổng / kỳ</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 font-medium">
+                                    <tr class="bg-emerald-50/50">
+                                        <td class="py-3 px-4 font-extrabold text-emerald-700">1. Xuất sắc</td>
+                                        <td class="py-3 px-4">Xuất sắc (≥ 3,60)</td>
+                                        <td class="py-3 px-4">Xuất sắc (≥ 90)</td>
+                                        <td class="py-3 px-4 text-right font-extrabold text-emerald-700">1,2 × Mức Khá</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 font-extrabold text-ctut-700" rowspan="2">2. Giỏi</td>
+                                        <td class="py-3 px-4">Giỏi (3,20 – 3,59)</td>
+                                        <td class="py-3 px-4">Tốt, Xuất sắc (≥ 80)</td>
+                                        <td class="py-3 px-4 text-right font-extrabold text-ctut-700" rowspan="2">1,1 × Mức Khá</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4">Xuất sắc (≥ 3,60)</td>
+                                        <td class="py-3 px-4">Tốt (80 – 89)</td>
+                                    </tr>
+                                    <tr class="bg-amber-50/40">
+                                        <td class="py-3 px-4 font-bold text-amber-800">3. Khá <span class="block text-[11px] font-normal text-amber-700">(Chỉ xét diện ưu tiên*)</span></td>
+                                        <td class="py-3 px-4">Khá (2,50 – 3,19)</td>
+                                        <td class="py-3 px-4">Khá, Tốt, Xuất sắc (≥ 65)</td>
+                                        <td class="py-3 px-4 text-right font-bold text-amber-800">Học phí/tháng × 5 tháng</td>
+                                    </tr>
+                                    <tr class="bg-blue-50/40">
+                                        <td class="py-3 px-4 font-bold text-blue-800">4. Diện GĐCS, HN, HCN, HCKK</td>
+                                        <td class="py-3 px-4">Giỏi, Xuất sắc (≥ 3,20)</td>
+                                        <td class="py-3 px-4">Khá (65 – 79)</td>
+                                        <td class="py-3 px-4 text-right font-bold text-blue-800">Xét theo diện ưu tiên</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="p-4 bg-slate-50 border-t border-slate-200 text-xs text-slate-600 space-y-1.5">
+                            <p><b>* Lưu ý Điều 4:</b> Mức học bổng loại <b>Khá</b> chỉ xét cho sinh viên có giấy xác nhận thuộc diện: <i>gia đình chính sách, hộ nghèo, hộ cận nghèo, gia đình hoàn cảnh khó khăn đột xuất</i>. Học bổng xét theo thứ tự từ Xuất sắc trở xuống đến hết quỹ.</p>
+                            <p><b>* Thời gian công bố kết quả (Điều 5):</b> Mỗi năm xét 02 kỳ chính, công bố trước ngày <b>31/3</b> và <b>31/8</b> hàng năm.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 5: THANG ĐIỂM CHUẨN CTUT ================= -->
         <section id="tab-grading-scale" class="tab-content hidden space-y-6">
             <div class="border-b border-slate-200 pb-4">
                 <h2 class="text-2xl font-bold text-slate-900 flex items-center">
@@ -747,7 +927,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
             <!-- Co-brand Footer -->
             <div class="flex items-center justify-center space-x-3">
-                <div class="w-8 h-8 rounded-full bg-white text-ctut-800 font-black text-[10px] flex items-center justify-center border border-amber-400">CTUT</div>
+                <div class="w-8 h-8 rounded-full bg-white overflow-hidden flex items-center justify-center border border-amber-400">
+                    <img src="logoctut.jpg" alt="Logo CTUT" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <span class="hidden text-ctut-800 font-black text-[10px]">CTUT</span>
+                </div>
                 <span class="text-amber-400 font-bold"><i class="fa-solid fa-xmark"></i></span>
                 <img src="logo.jpg" alt="Thanhdev Hub" class="w-8 h-8 rounded-full object-cover border border-amber-400" onerror="this.style.display='none'">
                 <span class="font-extrabold text-white text-sm tracking-wide">CẨM NANG SINH VIÊN CTUT</span>
@@ -756,7 +939,7 @@
             <p class="text-amber-400 font-bold text-sm">
                 Tác giả thực hiện: NGUYEN TRUNG THANH (Thanhdev Hub)
             </p>
-            <p class="text-slate-500 text-[11px]">&copy; 2026 CTUT × Thanhdev Hub. Tất cả dữ liệu chuẩn quy chế đào tạo.</p>
+            <p class="text-slate-500 text-[11px]">&copy; 2026 CTUT × Thanhdev Hub. Tất cả dữ liệu chuẩn quy chế đào tạo & QĐ 591/QĐ-ĐHKTCN.</p>
         </div>
     </footer>
 
@@ -771,6 +954,7 @@
             setInterval(updateLiveClock, 1000);
             renderSavedSubjects();
             calculateGrade();
+            evaluateScholarship();
         });
 
         // Tab Switcher Logic
@@ -998,6 +1182,17 @@
             gpaBox.classList.remove('hidden');
         }
 
+        function syncGPAToScholarship() {
+            const avgVal = parseFloat(document.getElementById('gpa-semester-val').innerText);
+            if (!isNaN(avgVal)) {
+                document.getElementById('hb-gpa').value = avgVal.toFixed(2);
+                const hasLowScore = savedSubjects.some(s => s.score4 < 1.5 || s.score10 < 5.0);
+                document.getElementById('hb-first-attempt').checked = !hasLowScore;
+            }
+            evaluateScholarship();
+            switchTab('scholarship');
+        }
+
         function deleteSubject(id) {
             savedSubjects = savedSubjects.filter(s => s.id !== id);
             localStorage.setItem('ctut_saved_subjects', JSON.stringify(savedSubjects));
@@ -1010,6 +1205,105 @@
                 localStorage.removeItem('ctut_saved_subjects');
                 renderSavedSubjects();
             }
+        }
+
+        // Scholarship Evaluation Logic (QĐ 591/QĐ-ĐHKTCN)
+        function evaluateScholarship() {
+            const gpa = parseFloat(document.getElementById('hb-gpa').value) || 0;
+            const drl = parseFloat(document.getElementById('hb-drl').value) || 0;
+            const credits = parseInt(document.getElementById('hb-credits').value) || 0;
+            const semType = document.getElementById('hb-semester-type').value;
+            const isRegular = document.getElementById('hb-regular').checked;
+            const isFirstAttempt = document.getElementById('hb-first-attempt').checked;
+            const noDiscipline = document.getElementById('hb-no-discipline').checked;
+            const isPriority = document.getElementById('hb-priority').checked;
+
+            const card = document.getElementById('hb-result-card');
+            const badge = document.getElementById('hb-status-badge');
+            const titleEl = document.getElementById('hb-tier-title');
+            const valEl = document.getElementById('hb-value-formula');
+            const expEl = document.getElementById('hb-explanation');
+
+            let reasons = [];
+
+            if (!isRegular) reasons.push('Không thuộc diện sinh viên đại học chính quy hệ chuẩn (QĐ 591 không áp dụng cho văn bằng 2 và liên thông).');
+            if (semType === 'summer') reasons.push('Học bổng khuyến khích học tập chỉ xét cho các học kỳ chính, không xét học kỳ phụ.');
+            if (semType === 'main' && credits < 15) reasons.push(`Tổng số tín chỉ đăng ký trong học kỳ chính hiện là <b>${credits} tín chỉ</b> (chưa đạt mức tối thiểu <b>15 tín chỉ</b>).`);
+            if (!isFirstAttempt) reasons.push('Có học phần thi lại hoặc có điểm dưới <b>1,5</b> (thang điểm 4) / dưới <b>5,0</b> (thang điểm 10).');
+            if (!noDiscipline) reasons.push('Bị kỷ luật từ mức khiển trách trở lên.');
+            if (gpa < 2.5) reasons.push(`Điểm trung bình học tập hiện tại là <b>${gpa.toFixed(2)}</b> (chưa đạt loại Khá từ <b>2,50</b> trở lên).`);
+            if (drl < 65) reasons.push(`Điểm rèn luyện hiện tại là <b>${drl}</b> (chưa đạt loại Khá từ <b>65 điểm</b> trở lên).`);
+
+            if (reasons.length > 0) {
+                card.className = 'bg-white p-6 rounded-2xl shadow-sm border-2 border-red-200 space-y-4';
+                badge.className = 'bg-red-100 text-red-800 text-xs font-extrabold px-3 py-1 rounded-full';
+                badge.innerText = 'CHƯA ĐỦ ĐIỀU KIỆN';
+                titleEl.className = 'text-xl sm:text-2xl font-black text-red-600 mt-0.5';
+                titleEl.innerText = 'Không đủ chuẩn xét học bổng';
+                valEl.innerText = '0 đ';
+                expEl.innerHTML = `<ul class="list-disc pl-5 space-y-1 text-red-700 font-medium">${reasons.map(r => `<li>${r}</li>`).join('')}</ul>`;
+                return;
+            }
+
+            // Determine academic and conduct ranks
+            const acadRank = gpa >= 3.6 ? 'XS' : (gpa >= 3.2 ? 'G' : 'K');
+            const drlRank = drl >= 90 ? 'XS' : (drl >= 80 ? 'T' : 'K');
+
+            let tier = '';
+            let formula = '';
+            let note = '';
+
+            if (acadRank === 'XS' && drlRank === 'XS') {
+                tier = 'Học bổng Loại Xuất Sắc';
+                formula = '1,2 × Mức học bổng loại Khá';
+                note = 'Chúc mừng! Bạn đạt mức ưu tiên cao nhất trong danh sách xét cấp từ trên xuống của Trường.';
+            } else if ((acadRank === 'G' && (drlRank === 'T' || drlRank === 'XS')) || (acadRank === 'XS' && drlRank === 'T')) {
+                tier = 'Học bổng Loại Giỏi';
+                formula = '1,1 × Mức học bổng loại Khá';
+                note = 'Bạn đủ điều kiện xét học bổng loại Giỏi (xét theo thứ tự sau nhóm Xuất sắc đến hết quỹ học bổng).';
+            } else if (acadRank === 'K' && (drlRank === 'K' || drlRank === 'T' || drlRank === 'XS')) {
+                if (isPriority) {
+                    tier = 'Học bổng Loại Khá (Diện Ưu Tiên)';
+                    formula = 'Học phí/tháng × 05 tháng';
+                    note = 'Bạn đủ điều kiện xét học bổng loại Khá do có giấy xác nhận thuộc diện gia đình chính sách / hộ nghèo / cận nghèo / khó khăn đột xuất.';
+                } else {
+                    card.className = 'bg-white p-6 rounded-2xl shadow-sm border-2 border-amber-300 space-y-4';
+                    badge.className = 'bg-amber-100 text-amber-900 text-xs font-extrabold px-3 py-1 rounded-full';
+                    badge.innerText = 'CHƯA ĐỦ ĐIỀU KIỆN (ĐIỀU 4)';
+                    titleEl.className = 'text-xl sm:text-2xl font-black text-amber-700 mt-0.5';
+                    titleEl.innerText = 'Mức Khá chỉ xét diện ưu tiên';
+                    valEl.innerText = 'Cần GPA ≥ 3,20';
+                    expEl.innerHTML = `Theo <b>Khoản 1 Điều 4 QĐ 591</b>, mức học bổng loại <b>Khá</b> chỉ xét cho sinh viên có giấy xác nhận thuộc diện: <i>gia đình chính sách, hộ nghèo, hộ cận nghèo, hoàn cảnh khó khăn đột xuất</i>. Nếu không thuộc diện này, bạn cần nâng GPA lên mức <b>Giỏi (≥ 3,20)</b> và ĐRL <b>Tốt (≥ 80)</b>.`;
+                    return;
+                }
+            } else if ((acadRank === 'G' || acadRank === 'XS') && drlRank === 'K') {
+                if (isPriority) {
+                    tier = 'Học bổng Diện GĐCS / HN / HCN / HCKK';
+                    formula = 'Xét theo khung diện ưu tiên';
+                    note = 'Bạn có học lực Giỏi/Xuất sắc nhưng ĐRL đạt mức Khá (65–79), đủ điều kiện xét theo nhóm đối tượng ưu tiên tại Mục 3 Điều 3.';
+                } else {
+                    card.className = 'bg-white p-6 rounded-2xl shadow-sm border-2 border-amber-300 space-y-4';
+                    badge.className = 'bg-amber-100 text-amber-900 text-xs font-extrabold px-3 py-1 rounded-full';
+                    badge.innerText = 'THIẾU ĐIỂM RÈN LUYỆN';
+                    titleEl.className = 'text-xl sm:text-2xl font-black text-amber-700 mt-0.5';
+                    titleEl.innerText = 'Cần ĐRL đạt mức Tốt (≥ 80)';
+                    valEl.innerText = 'Thiếu ĐRL Tốt';
+                    expEl.innerHTML = `Học lực của bạn đã đạt mức <b>Giỏi/Xuất sắc (${gpa.toFixed(2)})</b>, nhưng Điểm rèn luyện hiện ở mức <b>Khá (${drl} điểm)</b>. Nhóm này chỉ xét cho sinh viên thuộc diện GĐCS, hộ nghèo, cận nghèo, khó khăn đột xuất. Bạn cần tối thiểu <b>80 điểm rèn luyện</b> để nhận học bổng loại Giỏi.`;
+                    return;
+                }
+            }
+
+            if (semType === 'final' && credits < 15) {
+                note += ' <i>(Lưu ý học kỳ cuối dưới 15 tín chỉ: Nhà trường sẽ căn cứ thêm kết quả học tập và rèn luyện của học kỳ liền kề trước đó).</i>';
+            }
+
+            card.className = 'bg-white p-6 rounded-2xl shadow-sm border-2 border-emerald-300 space-y-4';
+            badge.className = 'bg-emerald-100 text-emerald-800 text-xs font-extrabold px-3 py-1 rounded-full';
+            badge.innerText = 'ĐỦ ĐIỀU KIỆN XÉT';
+            titleEl.className = 'text-2xl font-black text-emerald-700 mt-0.5';
+            titleEl.innerText = tier;
+            valEl.innerText = formula;
+            expEl.innerHTML = `<p class="text-slate-700 font-medium">${note}</p>`;
         }
 
         // Realtime Clock & Current Period Detector
